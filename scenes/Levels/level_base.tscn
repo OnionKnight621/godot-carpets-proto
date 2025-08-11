@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://btdkh3ee3hdvs"]
+
+[ext_resource type="Script" uid="uid://c2oasfwp17qfq" path="res://scenes/Levels/level_base.gd" id="1_cddwm"]
+
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_cddwm")
+
+[node name="CarpetRoot" type="Node2D" parent="."]
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUDBase" type="Control" parent="HUDLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
