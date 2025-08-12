@@ -1,6 +1,6 @@
 extends Control
 
-@export var test_level_scene: PackedScene;
+@export var test_level_scene: PackedScene = preload("res://scenes/Levels/level_test.tscn");
 
 func _on_start_btn_pressed() -> void:
 	if test_level_scene:

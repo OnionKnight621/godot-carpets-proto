@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://cidwtshsgv7t"]
+[gd_scene load_steps=2 format=3 uid="uid://cidwtshsgv7t"]
+
+[ext_resource type="Script" uid="uid://d4d5bkjgo8b31" path="res://scenes/Tools/tool_base.gd" id="1_pnqwb"]
 
 [node name="ToolBase" type="Area2D"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+script = ExtResource("1_pnqwb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Collision" type="Node2D" parent="."]

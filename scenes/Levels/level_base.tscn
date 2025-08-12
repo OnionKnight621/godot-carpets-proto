@@ -6,6 +6,10 @@
 script = ExtResource("1_cddwm")
 
 [node name="CarpetRoot" type="Node2D" parent="."]
+position = Vector2(575, 325)
+
+[node name="ToolBase" type="Node2D" parent="."]
+position = Vector2(1099, 47)
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 
@@ -15,6 +19,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Node2D" parent="."]
+position = Vector2(575, 325)
+
+[node name="Camera2D" type="Camera2D" parent="Camera"]
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
