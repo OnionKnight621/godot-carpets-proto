@@ -9,6 +9,7 @@ var run_id: int = 0
 var tools: Array = []   # later: Array[ToolData]
 var perks: Array = []   # later: Array[PerkData]
 var water_left: float = 100.0
+var tool_is_dragging: bool = false;
 
 func start_new_run(seed: int = Time.get_ticks_msec()) -> void:
 	run_id += 1

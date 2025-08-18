@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d4d5bkjgo8b31" path="res://scenes/Tools/tool_base.gd" id="1_pnqwb"]
 
-[node name="ToolBase" type="Area2D"]
+[node name="ToolBase" type="Area2D" groups=["draggable_items"]]
 script = ExtResource("1_pnqwb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="Collision" type="Node2D" parent="."]
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

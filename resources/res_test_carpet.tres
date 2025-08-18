@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CarpetData" load_steps=3 format=3 uid="uid://dl1a10n733qab"]
+
+[ext_resource type="PackedScene" uid="uid://vt4c53itns42" path="res://scenes/Carpets/test_carpet.tscn" id="1_od41k"]
+[ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/carpet_data.gd" id="2_m234y"]
+
+[resource]
+script = ExtResource("2_m234y")
+clean_carpet_scene = ExtResource("1_od41k")
+dirt_textures = Array[Texture2D]([])
+tags = Array[String]([])
+difficulty = 1
+metadata/_custom_type_script = "uid://duw0ki0n3kmq8"

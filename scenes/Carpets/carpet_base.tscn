@@ -1,12 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://646e1b8orhnt"]
+[gd_scene format=3 uid="uid://cic57ipbb5cdc"]
 
-[ext_resource type="Script" uid="uid://qhh8qkd3sl1a" path="res://carpet_base.gd" id="1_dj7or"]
+[node name="carpet_base" type="Area2D"]
 
-[node name="CarpetBase" type="Area2D"]
-script = ExtResource("1_dj7or")
-
-[node name="CarpetComponents" type="Node2D" parent="."]
-
-[node name="DirtLayers" type="Node2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="." groups=["carpet_area"]]

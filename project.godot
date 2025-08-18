@@ -27,7 +27,17 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ai_assistant_hub/plugin.cfg")
+enabled=PackedStringArray()
+
+[global_group]
+
+carpet_area=""
+draggable_items=""
+
+[layer_names]
+
+2d_physics/layer_1="carpet"
+2d_physics/layer_2="tool"
 
 [plugins]
 

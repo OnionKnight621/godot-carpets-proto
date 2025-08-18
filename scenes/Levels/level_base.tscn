@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://btdkh3ee3hdvs"]
+[gd_scene load_steps=6 format=3 uid="uid://btdkh3ee3hdvs"]
 
 [ext_resource type="Script" uid="uid://c2oasfwp17qfq" path="res://scenes/Levels/level_base.gd" id="1_cddwm"]
+[ext_resource type="PackedScene" uid="uid://bsyfke3cmy6gh" path="res://scenes/Tools/simple_round_brush.tscn" id="2_f3njo"]
+[ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/carpet_data.gd" id="2_wsqji"]
+[ext_resource type="Resource" uid="uid://dl1a10n733qab" path="res://resources/res_test_carpet.tres" id="3_f3njo"]
+[ext_resource type="Resource" uid="uid://jor6orpujlgs" path="res://resources/res_test_carpet_red.tres" id="5_wckjl"]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_cddwm")
+tool_scene = ExtResource("2_f3njo")
+carpet_pool = Array[ExtResource("2_wsqji")]([ExtResource("3_f3njo"), ExtResource("5_wckjl")])
 
 [node name="CarpetRoot" type="Node2D" parent="."]
 position = Vector2(575, 325)
