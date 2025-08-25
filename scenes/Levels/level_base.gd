@@ -25,13 +25,14 @@ func _spawn_carpet(carpet_scene: PackedScene) -> void:
 	var data: CarpetData = _pick_carpet_data();
 	var carpet = dirty_carpet_scene.instantiate() as DirtyCarpetBase
 	carpet.configure(data)
+	print('carpet data: ', data)
 	$CarpetRoot.add_child(carpet)
 	carpet.cleaned.connect(_on_carpet_cleaned)
 	carpet.progress_changed.connect(_on_progress)
 	
 func _pick_carpet_data() -> CarpetData:
 	var idx = rng.randi_range(0, carpet_pool.size() - 1)
-	print(carpet_pool)
+	print('carpets pool: ', carpet_pool)
 	return carpet_pool[idx]
 	
 func _spawn_tool(tool_scene: PackedScene) -> void:
@@ -42,7 +43,9 @@ func _spawn_tool(tool_scene: PackedScene) -> void:
 
 
 func _on_progress(p: float) -> void:
-	$HUDLayer/HUDBase.set_progress(p)
+	#$HUDLayer/HUDBase.set_progress(p)
+	print("progress: ", p)
 
 func _on_carpet_cleaned() -> void:
-	$HUDLayer/HUDBase.show_perk_choice()
+	#$HUDLayer/HUDBase.show_perk_choice()
+	print('cleaned')

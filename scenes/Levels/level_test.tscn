@@ -5,3 +5,6 @@
 
 [node name="LevelTest" instance=ExtResource("1_oojhj")]
 script = ExtResource("2_udonv")
+
+[node name="Floor" parent="Background" index="0"]
+texture_filter = 1

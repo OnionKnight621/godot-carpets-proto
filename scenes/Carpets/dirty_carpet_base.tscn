@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://646e1b8orhnt"]
+[gd_scene load_steps=3 format=3 uid="uid://646e1b8orhnt"]
 
 [ext_resource type="Script" uid="uid://qhh8qkd3sl1a" path="res://scenes/Carpets/dirty_carpet_base.gd" id="1_sp3wl"]
+[ext_resource type="PackedScene" uid="uid://drqp8f1b6tvj3" path="res://scenes/Dirt/swampy_dirt_chunk.tscn" id="2_0o2h4"]
 
 [node name="DirtyCarpetBase" type="Area2D"]
+collision_mask = 6
 script = ExtResource("1_sp3wl")
+dirt_chunk_scene = ExtResource("2_0o2h4")
+density = 0.9
 
 [node name="CarpetComponents" type="Node2D" parent="."]
 

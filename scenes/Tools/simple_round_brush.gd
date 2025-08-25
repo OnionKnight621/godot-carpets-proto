@@ -1,1 +1,1 @@
-extends Toolbase
+extends ToolBase

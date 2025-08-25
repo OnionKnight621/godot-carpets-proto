@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://d4d5bkjgo8b31" path="res://scenes/Tools/tool_base.gd" id="1_pnqwb"]
 
 [node name="ToolBase" type="Area2D" groups=["draggable_items"]]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_pnqwb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -4,13 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://ukv7wqph2qgm" path="res://graphics/sprites/carpets/rug-test-sanya-256.png" id="2_njprf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2a4m"]
-size = Vector2(112, 44)
+size = Vector2(223.75, 88)
 
 [node name="test_carpet" instance=ExtResource("1_njprf")]
-scale = Vector2(3, 3)
+texture_filter = 1
+scale = Vector2(4, 4)
 
 [node name="sprite" parent="." index="0"]
 texture = ExtResource("2_njprf")
 
 [node name="collision" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.125, -0.25)
 shape = SubResource("RectangleShape2D_p2a4m")
