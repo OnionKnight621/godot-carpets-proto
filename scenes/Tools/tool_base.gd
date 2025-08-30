@@ -4,9 +4,10 @@ class_name ToolBase
 var tool_type
 var tool_active: bool = false;
 var tool_draggable: bool = false
+@onready var particles: GPUParticles2D = $GPUParticles2D
 
 @export var brush_radius = 16;
-@export var clean_power = 1.0;
+@export var clean_power = 5.0;
 @export var min_speed_px_s = 80;
 @export var max_speed_px_s = 1000;
 @export var hold_clean_factor = 0;
@@ -17,12 +18,15 @@ var _prev_pos = Vector2.ZERO;
 
 func _ready() -> void:
 	_prev_pos = global_position;
+	particles.emitting = false
 		
 func _physics_process(delta: float) -> void:
 	if run_state.tool_is_dragging:
 		var cur = get_global_mouse_position();
 		var dist = cur.distance_to(_prev_pos);
 		var speed = dist / max(delta, 0.0001) #px/s
+		
+		if !speed: particles.emitting = false
 		
 		global_position = cur
 		_prev_pos = cur;
@@ -54,6 +58,7 @@ func _on_mouse_exited() -> void:
 	if not run_state.tool_is_dragging:
 		tool_draggable = false;
 		scale = tool_scale;
+		particles.emitting = false
 
 
 func _clean_overlaps(delta: float, move_factor: float) -> void:
@@ -62,3 +67,6 @@ func _clean_overlaps(delta: float, move_factor: float) -> void:
 	for a in get_overlapping_areas():
 		if a is DirtChunk:
 			a.apply_clean(delta, clean_power * (brush_radius / 16))
+			particles.emitting = true
+		else:
+			particles.emitting = false

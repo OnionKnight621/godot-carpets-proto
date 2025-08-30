@@ -6,6 +6,9 @@
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_pnqwb")
+clean_power = 1.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
