@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://5a1udmiyb7uu"]
+
+[ext_resource type="PackedScene" uid="uid://bksni7j7jkkhs" path="res://scenes/Dirt/dirt_chank_base.tscn" id="1_1m5ex"]
+[ext_resource type="Texture2D" uid="uid://bfqdssl3f2cta" path="res://graphics/sprites/dirt/dirt_chunks_clay.png" id="2_heevj"]
+
+[node name="clayy_dirt_chunk" instance=ExtResource("1_1m5ex")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+texture = ExtResource("2_heevj")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
