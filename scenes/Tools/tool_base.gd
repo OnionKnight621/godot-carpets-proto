@@ -62,11 +62,18 @@ func _on_mouse_exited() -> void:
 
 
 func _clean_overlaps(delta: float, move_factor: float) -> void:
-	if move_factor <= 0: return
+	if move_factor <= 0: 
+		particles.emitting = false
+		return
 	
-	for a in get_overlapping_areas():
-		if a is DirtChunk:
-			a.apply_clean(delta, clean_power * (brush_radius / 16))
+	var cleaned_any := false
+	for area in get_overlapping_areas():
+		if area is DirtChunk:
+			var base : DirtyCarpetBase = (area as DirtChunk).get_meta("dirty_base") as DirtyCarpetBase
+			if base and base.has_method("can_clean_chunk") and base.can_clean_chunk(area):
+				area.apply_clean(delta, clean_power * move_factor * (brush_radius / 16.0))
+
+			#a.apply_clean(delta, clean_power * (brush_radius / 16))
 			particles.emitting = true
 		else:
 			particles.emitting = false

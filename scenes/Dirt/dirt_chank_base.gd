@@ -7,13 +7,15 @@ signal removed
 @export var cleaning_rate: float = 1;
 @onready var sprite: Sprite2D = $Sprite2D;
 
+var layer_index: int = 0;
+var cell: Vector2i = Vector2i.ZERO;
+
 @export var atlas: Texture2D
 @export var tile_px: int = 8
 @export var atlas_cols: int = 4
 
 func set_variant(index: int) -> void:
-	if sprite == null:
-		sprite = get_node("Sprite2D")
+	if sprite == null: sprite = get_node("Sprite2D")
 	var col = index % atlas_cols
 	var row = index / atlas_cols
 	sprite.texture = atlas

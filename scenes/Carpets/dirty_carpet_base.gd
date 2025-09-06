@@ -13,6 +13,11 @@ var total_dirt_chunks: int = 0;
 var removed_dirt_chunks: int = 0;
 
 var area: Area2D
+var layer_totals: Array[int] = []
+var layer_removed: Array[int] = []
+
+var grid := {}      # Dictionary<Vector2i, Array[DirtChunk]>
+var grid_top := {}  # Dictionary<Vector2i, int>
 
 func _ready() -> void:
 	print('dirty carpet spawned')
@@ -27,66 +32,108 @@ func configure(data: CarpetData) -> void:
 	$DirtLayers.position = area.position
 	$DirtLayers.scale = area.scale
 	$DirtLayers.rotation = area.rotation
-	_spawn_dirt_grid(data)
+	_spawn_dirt_layers(data)
 	
-func clean_at(pos, radius):
-	print("pos: ", pos, radius)
-	
-func _spawn_dirt_grid(data: CarpetData) -> void:
-	if dirt_chunk_scene == null: return
-	print('area: ', area)
-	var sprite = area.get_node_or_null("sprite") as Sprite2D;
-	print("dirt sprite ", sprite)
-	var size = sprite.texture.get_size();
-	print('sprite size: ', size)
-	var cols = int(size.x / tile_px)
-	print('cols: ', cols)
-	var rows = int(size.y / tile_px)
-	print('rows: ', rows)
-	var half = size * 0.5;
-	
-	var rng = RandomNumberGenerator.new();
-	rng.randomize();
-	print('rng: ', rng)
-	
-	total_dirt_chunks = 0;
-	removed_dirt_chunks = 0
-	
-	for y in rows:
-		for x in cols:
-			if rng.randf() > density:
-				continue
-			var chunk = dirt_chunk_scene.instantiate() as DirtChunk
-			
-			if data.dirt_atlas:
-				chunk.atlas = data.dirt_atlas
-				chunk.tile_px = tile_px
-				chunk.atlas_cols = atlas_cols
-				var idx := rng.randi_range(0, atlas_cols * atlas_cols)
-				chunk.set_variant(idx)
-			if data.dirt_textures.size() > 0:
-				var tex = data.dirt_textures[rng.randi_range(0, data.dirt_textures.size() - 1)]
-				chunk.get_node("Sprite2D").texture = tex
-				
-			var local_pos = Vector2(x * tile_px + tile_px * 0.5, y * tile_px + tile_px * 0.5) - half
-			chunk.position = local_pos
-			
-			chunk.removed.connect(_on_chunk_removed)
-			$DirtLayers.add_child(chunk)
-			total_dirt_chunks += 1
-			
-		print("tdch: ",total_dirt_chunks)
-		_emit_progress()
+func _spawn_dirt_layers(data: CarpetData) -> void:
+	if dirt_chunk_scene == null: return 
+	var sprite := area.get_node_or_null("sprite") as Sprite2D
+	print('s', sprite)
+	if sprite == null or sprite.texture == null: return
 
-func _on_chunk_removed() -> void:
-	removed_dirt_chunks += 1
-	print("chunk removed: ", removed_dirt_chunks)
-	_emit_progress()
-	if removed_dirt_chunks >= total_dirt_chunks and total_dirt_chunks > 0:
-		cleaned.emit()
+	var size := sprite.texture.get_size()
+	var cols := int(size.x / tile_px)
+	var rows := int(size.y / tile_px)
+	var half := size * 0.5
+
+	layer_totals.clear()
+	layer_removed.clear()
+	grid.clear()
+	grid_top.clear()
+
+	var rng := RandomNumberGenerator.new(); rng.randomize()
 	
+	print("ddl", data.dirt_layers)
+
+	for li in data.dirt_layers.size():
+		var spec: DirtLayerData = data.dirt_layers[li]
+		# (на цьому етапі tile_px у всіх шарах повинен збігатися з експортним tile_px)
+		var layer_node := Node2D.new()
+		layer_node.name = "Layer_%d" % li
+		$DirtLayers.add_child(layer_node)
+
+		var total := 0
+		print('rows', rows)
+		for y in rows:
+			for x in cols:
+				if rng.randf() > spec.density: continue
+
+				var chunk := dirt_chunk_scene.instantiate() as DirtChunk
+				chunk.layer_index = li
+				chunk.cell = Vector2i(x, y)
+				chunk.hp = spec.hp
+				chunk.cleaning_rate = spec.cleaning_rate
+				chunk.atlas = spec.atlas
+				chunk.tile_px = spec.tile_px
+				chunk.atlas_cols = spec.atlas_cols
+				chunk.set_variant(rng.randi_range(0, spec.atlas_cols * spec.atlas_cols - 1))
+
+				# pos from center
+				chunk.position = Vector2(x * tile_px + tile_px * 0.5, y * tile_px + tile_px * 0.5) - half
+
+				# base tie
+				chunk.set_meta("dirty_base", self)
+
+				# cell stack
+				var key := chunk.cell
+				if not grid.has(key): grid[key] = []
+				grid[key].append(chunk)
+				# top — msx layer index
+				var prev_top := int(grid_top.get(key, -1))
+				if li > prev_top: grid_top[key] = li
+
+				# on removed: update progress і top (only in that cell)
+				var c := chunk
+				chunk.removed.connect(func(): _on_chunk_removed(li, c))
+
+				layer_node.add_child(chunk)
+				total += 1
+
+		layer_totals.append(total)
+		layer_removed.append(0)
+
+	_emit_progress()
+
+func _on_chunk_removed(li: int, chunk: DirtChunk) -> void:
+	layer_removed[li] += 1
+
+	var key := chunk.cell
+	if grid.has(key):
+		grid[key].erase(chunk)
+		var new_top := -1
+		for c in grid[key]:
+			if c.layer_index > new_top:
+				new_top = c.layer_index
+		if new_top == -1:
+			grid.erase(key); grid_top.erase(key)
+		else:
+			grid_top[key] = new_top
+
+	_emit_progress()
+
+	# all clear
+	var all_total := 0; for t in layer_totals: all_total += t
+	var all_removed := 0; for r in layer_removed: all_removed += r
+	if all_total > 0 and all_removed >= all_total:
+		cleaned.emit()
+
+# allow to clean only if chunk is top in his cell
+func can_clean_chunk(chunk: DirtChunk) -> bool:
+	return grid_top.get(chunk.cell, chunk.layer_index) == chunk.layer_index
+
 func _emit_progress() -> void:
-	var p = 0.0
-	if total_dirt_chunks > 0:
-		p = float(removed_dirt_chunks) / float(total_dirt_chunks)
+	var all_total := 0; for t in layer_totals: all_total += t
+	var all_removed := 0; for r in layer_removed: all_removed += r
+	var p := 0.0
+	if all_total > 0:
+		p = float(all_removed) / float(all_total)
 	progress_changed.emit(p)

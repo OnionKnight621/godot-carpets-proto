@@ -1,16 +1,15 @@
-[gd_resource type="Resource" script_class="CarpetData" load_steps=4 format=3 uid="uid://jor6orpujlgs"]
+[gd_resource type="Resource" script_class="CarpetData" load_steps=6 format=3 uid="uid://jor6orpujlgs"]
 
 [ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/carpet_data.gd" id="1_0j65f"]
 [ext_resource type="PackedScene" uid="uid://dw3lp2ycwacog" path="res://scenes/Carpets/test_carpet_red.tscn" id="1_nsisq"]
-[ext_resource type="Texture2D" uid="uid://blas3tcmp42vt" path="res://graphics/sprites/dirt/dirt-chanks-swampy.png" id="2_a8lr5"]
+[ext_resource type="Script" uid="uid://cykhbkywctm2b" path="res://resources/dirt_layer_data.gd" id="2_iyb1u"]
+[ext_resource type="Resource" uid="uid://cf31mytxyocm0" path="res://resources/res_clayy_dirt.tres" id="3_04lua"]
+[ext_resource type="Resource" uid="uid://7wt8s30yenjv" path="res://resources/res_muddy_dirt.tres" id="4_4nt33"]
 
 [resource]
 script = ExtResource("1_0j65f")
 clean_carpet_scene = ExtResource("1_nsisq")
-dirt_textures = Array[Texture2D]([])
-dirt_atlas = ExtResource("2_a8lr5")
-atlas_cols = 4
-tile_px = 8
+dirt_layers = Array[ExtResource("2_iyb1u")]([ExtResource("3_04lua"), ExtResource("4_4nt33")])
 tags = Array[String]([])
 difficulty = 2
 metadata/_custom_type_script = "uid://duw0ki0n3kmq8"

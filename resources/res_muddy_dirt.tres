@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DirtLayerData" load_steps=3 format=3 uid="uid://7wt8s30yenjv"]
+
+[ext_resource type="Script" uid="uid://cykhbkywctm2b" path="res://resources/dirt_layer_data.gd" id="1_674ox"]
+[ext_resource type="Texture2D" uid="uid://blas3tcmp42vt" path="res://graphics/sprites/dirt/dirt-chanks-swampy.png" id="1_ppeig"]
+
+[resource]
+script = ExtResource("1_674ox")
+atlas = ExtResource("1_ppeig")
+atlas_cols = 16
+tile_px = 2
+density = 0.9
+hp = 1.0
+clean_rate = 1.0
+layer_tag = ""
+metadata/_custom_type_script = "uid://cykhbkywctm2b"

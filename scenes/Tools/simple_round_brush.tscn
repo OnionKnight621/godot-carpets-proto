@@ -29,10 +29,10 @@ height = 40.4954
 texture_filter = 1
 scale = Vector2(2, 2)
 script = ExtResource("2_pka7x")
-clean_power = 2.0
+clean_power = 5.0
 
 [node name="GPUParticles2D" parent="." index="0"]
-amount = 1000
+amount = 2000
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_pka7x")
 

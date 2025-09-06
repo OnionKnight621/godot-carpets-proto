@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DirtLayerData" load_steps=3 format=3 uid="uid://cf31mytxyocm0"]
+
+[ext_resource type="Texture2D" uid="uid://bfqdssl3f2cta" path="res://graphics/sprites/dirt/dirt_chunks_clay.png" id="1_2g7hm"]
+[ext_resource type="Script" uid="uid://cykhbkywctm2b" path="res://resources/dirt_layer_data.gd" id="1_c5arp"]
+
+[resource]
+script = ExtResource("1_c5arp")
+atlas = ExtResource("1_2g7hm")
+atlas_cols = 16
+tile_px = 2
+density = 0.9
+hp = 10.0
+cleaning_rate = 1.0
+layer_tag = "clay dirt"
+metadata/_custom_type_script = "uid://cykhbkywctm2b"
