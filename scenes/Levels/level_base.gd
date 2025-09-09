@@ -44,7 +44,7 @@ func _spawn_tool(tool_scene: PackedScene) -> void:
 
 func _on_progress(p: float) -> void:
 	#$HUDLayer/HUDBase.set_progress(p)
-	print("progress: ", p)
+	run_state.carpet_progress = p
 
 func _on_carpet_cleaned() -> void:
 	#$HUDLayer/HUDBase.show_perk_choice()

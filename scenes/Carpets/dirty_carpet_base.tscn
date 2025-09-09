@@ -7,7 +7,6 @@
 collision_mask = 6
 script = ExtResource("1_sp3wl")
 dirt_chunk_scene = ExtResource("2_0o2h4")
-density = 0.9
 
 [node name="CarpetComponents" type="Node2D" parent="."]
 

@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dl1a10n733qab" path="res://resources/res_test_carpet.tres" id="3_f3njo"]
 [ext_resource type="Resource" uid="uid://jor6orpujlgs" path="res://resources/res_test_carpet_red.tres" id="5_wckjl"]
 [ext_resource type="Texture2D" uid="uid://c6ev6vdaghvu6" path="res://graphics/sprites/interior/wooden-floor-basic.png" id="6_etonf"]
-[ext_resource type="Script" uid="uid://c6n32glxs35j7" path="res://scenes/Levels/fps_counter.gd" id="6_s42oo"]
+[ext_resource type="PackedScene" uid="uid://hyfvcujkxbgf" path="res://scenes/UI/HUD/hud.tscn" id="9_kl866"]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_cddwm")
@@ -18,21 +18,6 @@ position = Vector2(575, 325)
 
 [node name="ToolBase" type="Node2D" parent="."]
 position = Vector2(1099, 47)
-
-[node name="HUDLayer" type="CanvasLayer" parent="."]
-
-[node name="HUDBase" type="Control" parent="HUDLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="HUDLayer/HUDBase"]
-
-[node name="FPSCounter" type="Label" parent="HUDLayer/HUDBase/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("6_s42oo")
 
 [node name="Camera" type="Node2D" parent="."]
 position = Vector2(575, 325)
@@ -48,3 +33,5 @@ z_index = -1
 position = Vector2(575, 323.5)
 scale = Vector2(2.24609, 2.52734)
 texture = ExtResource("6_etonf")
+
+[node name="HUD" parent="." instance=ExtResource("9_kl866")]

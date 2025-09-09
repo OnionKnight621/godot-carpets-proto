@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://hyfvcujkxbgf"]
+
+[ext_resource type="Script" uid="uid://b3frvl6nmftmp" path="res://scenes/UI/HUD/fps_counter.gd" id="1_5f3yu"]
+[ext_resource type="Script" uid="uid://2ttyw6lwwome" path="res://scenes/UI/HUD/hud.gd" id="1_76m5x"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_76m5x")
+
+[node name="FPSCounter" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_5f3yu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+layout_mode = 2

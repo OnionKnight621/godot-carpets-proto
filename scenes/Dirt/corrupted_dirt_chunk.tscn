@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf2rhs58mlcow"]
+
+[ext_resource type="PackedScene" uid="uid://bksni7j7jkkhs" path="res://scenes/Dirt/dirt_chank_base.tscn" id="1_q1ssi"]
+[ext_resource type="Texture2D" uid="uid://bnk27mu62oj3q" path="res://graphics/sprites/dirt/dirt-solids-corruption.png" id="2_oybdn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ssi"]
+size = Vector2(8, 8)
+
+[node name="CorruptedDirtChunk" instance=ExtResource("1_q1ssi")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture_filter = 1
+texture = ExtResource("2_oybdn")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 8)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_q1ssi")

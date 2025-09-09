@@ -3,6 +3,7 @@ class_name RunState;
 
 signal run_started
 signal resource_changed
+signal progress_change()
 
 var rng := RandomNumberGenerator.new()
 var run_id: int = 0
@@ -10,6 +11,11 @@ var tools: Array = []   # later: Array[ToolData]
 var perks: Array = []   # later: Array[PerkData]
 var water_left: float = 100.0
 var tool_is_dragging: bool = false;
+
+var carpet_progress: float = 0.0:
+	set(val):
+		carpet_progress = val;
+		progress_change.emit()
 
 func start_new_run(seed: int = Time.get_ticks_msec()) -> void:
 	run_id += 1
