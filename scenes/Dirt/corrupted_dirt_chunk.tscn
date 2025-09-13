@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf2rhs58mlcow"]
+[gd_scene load_steps=6 format=3 uid="uid://cf2rhs58mlcow"]
 
 [ext_resource type="PackedScene" uid="uid://bksni7j7jkkhs" path="res://scenes/Dirt/dirt_chank_base.tscn" id="1_q1ssi"]
 [ext_resource type="Texture2D" uid="uid://bnk27mu62oj3q" path="res://graphics/sprites/dirt/dirt-solids-corruption.png" id="2_oybdn"]
+[ext_resource type="Shader" uid="uid://6mnk3xsxqfhc" path="res://shaders/outline.gdshader" id="2_q1x7m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj45c"]
+shader = ExtResource("2_q1x7m")
+shader_parameter/color = Color(0, 0, 0, 0.745098)
+shader_parameter/width = 0.2
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1ssi"]
 size = Vector2(8, 8)
@@ -10,6 +20,7 @@ size = Vector2(8, 8)
 
 [node name="Sprite2D" parent="." index="0"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_xj45c")
 texture = ExtResource("2_oybdn")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)

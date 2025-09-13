@@ -20,6 +20,9 @@ var layer_removed: Array[int] = []
 var grid := {}      # Dictionary<Vector2i, Array[DirtChunk]>
 var grid_top := {}  # Dictionary<Vector2i, int>
 
+var col_poly: CollisionPolygon2D
+var col_shape: CollisionShape2D
+
 func _ready() -> void:
 	print('dirty carpet spawned')
 	
@@ -30,9 +33,16 @@ func configure(data: CarpetData) -> void:
 	area.add_to_group("carpet_area")
 	
 	$CarpetComponents.add_child(area)
+	
+	# mirror transform to match coordinates
 	$DirtLayers.position = area.position
 	$DirtLayers.scale = area.scale
 	$DirtLayers.rotation = area.rotation
+	
+	# find collision nodes
+	col_poly  = area.get_node_or_null("CollisionPolygon2D")
+	col_shape = area.get_node_or_null("CollisionShape2D")
+	
 	_spawn_dirt_layers(data)
 	
 func _spawn_dirt_layers(data: CarpetData) -> void:
@@ -73,6 +83,9 @@ func _spawn_dirt_layers(data: CarpetData) -> void:
 				# chance to place a block
 				if rng.randf() > spec.density:
 					continue
+					
+				if not _block_fully_inside(gx, gy, s, tile_px, half):
+					continue
 
 				var chunk := dirt_chunk_scene.instantiate() as DirtChunk
 
@@ -86,6 +99,7 @@ func _spawn_dirt_layers(data: CarpetData) -> void:
 				chunk.atlas_cols = spec.atlas_cols
 				chunk.set_variant(rng.randi_range(0, spec.atlas_cols * spec.atlas_cols - 1))
 				chunk.apply_scale_and_collision(s)
+				chunk.set_resistances_from(spec)
 
 				# position at the center of the s×s block
 				var center_cell := Vector2(gx + s * 0.5, gy + s * 0.5)
@@ -143,6 +157,36 @@ func _on_chunk_removed(li: int, chunk: DirtChunk) -> void:
 	var all_removed := 0; for r in layer_removed: all_removed += r
 	if all_total > 0 and all_removed >= all_total:
 		cleaned.emit()
+		
+func _point_inside_carpet_world(world_p: Vector2) -> bool:
+	if col_poly:
+		var p := col_poly.to_local(world_p)
+		return Geometry2D.is_point_in_polygon(p, col_poly.polygon)
+
+	if col_shape and col_shape.shape:
+		var p := col_shape.to_local(world_p)
+		if col_shape.shape is CircleShape2D:
+			return p.length() <= (col_shape.shape as CircleShape2D).radius
+		elif col_shape.shape is RectangleShape2D:
+			var e : Vector2 = (col_shape.shape as RectangleShape2D).extents
+			return abs(p.x) <= e.x and abs(p.y) <= e.y
+		elif col_shape.shape is ConvexPolygonShape2D:
+			var pts := (col_shape.shape as ConvexPolygonShape2D).points
+			return Geometry2D.is_point_in_polygon(p, pts)
+		# інші шейпи — як є
+	return true  # якщо колізії нема — вважай усе валідним
+	
+func _block_fully_inside(gx: int, gy: int, s: int, tile_px: int, half: Vector2) -> bool:
+	for oy in s:
+		for ox in s:
+			var local_center := Vector2(
+				(gx + ox) * tile_px + tile_px * 0.5,
+				(gy + oy) * tile_px + tile_px * 0.5
+			) - half
+			var world_center : Vector2 = $DirtLayers.to_global(local_center)
+			if not _point_inside_carpet_world(world_center):
+				return false
+	return true
 
 # allow to clean only if chunk is top in its cell
 func can_clean_chunk(chunk: DirtChunk) -> bool:

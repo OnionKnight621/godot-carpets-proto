@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://vt4c53itns42"]
 
 [ext_resource type="PackedScene" uid="uid://cic57ipbb5cdc" path="res://scenes/Carpets/carpet_base.tscn" id="1_njprf"]
-[ext_resource type="Texture2D" uid="uid://ukv7wqph2qgm" path="res://graphics/sprites/carpets/rug-test-sanya-256.png" id="2_njprf"]
+[ext_resource type="Texture2D" uid="uid://b58pwbgg5abk7" path="res://graphics/sprites/carpets/rug-test-sanya-256-128.png" id="2_njprf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2a4m"]
-size = Vector2(223.75, 88)
+size = Vector2(219.13, 86.9185)
 
 [node name="test_carpet" instance=ExtResource("1_njprf")]
 texture_filter = 1
-scale = Vector2(4, 4)
+scale = Vector2(4.6, 4.6)
 
 [node name="sprite" parent="." index="0"]
 texture = ExtResource("2_njprf")
 
-[node name="collision" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(-0.125, -0.25)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-0.434776, -0.415763)
 shape = SubResource("RectangleShape2D_p2a4m")

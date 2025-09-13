@@ -20,6 +20,19 @@ var covered_cells: Array[Vector2i] = []; # all cells covered by this one
 @export var base_radius: float = 4.0         # if round
 @export var base_extents: Vector2 = Vector2(4,4) # if square
 
+var resist_mech: float = 0.0;
+var resist_fluid: float = 0.0;
+var resist_solvent: float = 0.0;
+var resist_holy: float = 0.0;
+var resist_occult: float = 0.0
+
+func set_resistances_from(spec: DirtLayerData) -> void:
+	resist_mech    = clamp(spec.resist_mech, 0.0, 1.0)
+	resist_fluid   = clamp(spec.resist_fluid, 0.0, 1.0)
+	resist_solvent = clamp(spec.resist_solvent, 0.0, 1.0)
+	resist_holy    = clamp(spec.resist_holy, 0.0, 1.0)
+	resist_occult  = clamp(spec.resist_occult, 0.0, 1.0)
+
 func set_variant(index: int) -> void:
 	if sprite == null: sprite = get_node("Sprite2D")
 	var col = index % atlas_cols
