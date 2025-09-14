@@ -10,6 +10,8 @@ clean_power = 1.0
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 
+[node name="HitArea" type="Area2D" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

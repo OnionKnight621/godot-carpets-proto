@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://2xfavx2xhr2w"]
+
+[ext_resource type="PackedScene" uid="uid://cidwtshsgv7t" path="res://scenes/Tools/tool_base.tscn" id="1_ff0nx"]
+[ext_resource type="Texture2D" uid="uid://cvdgv8yqdrvdu" path="res://graphics/sprites/tools/super-basic-scraper.png" id="2_fum8t"]
+[ext_resource type="Script" uid="uid://x3ahycuj3jg6" path="res://scenes/Tools/simple_iron_scraper.gd" id="2_v43xh"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fum8t"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(-22, 22, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v43xh"]
+radius = 2.82338
+height = 12.7897
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum8t"]
+radius = 2.82842
+height = 36.7967
+
+[node name="SimpleIronScraper" instance=ExtResource("1_ff0nx")]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("2_v43xh")
+clean_power = 5.0
+mech = 5.0
+
+[node name="GPUParticles2D" parent="." index="0"]
+position = Vector2(-14, 10.5)
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_fum8t")
+
+[node name="HitArea" parent="." index="1"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" index="0"]
+position = Vector2(-14, 10.5)
+rotation = -0.845165
+shape = SubResource("CapsuleShape2D_v43xh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-3, -1)
+rotation = -2.35437
+shape = SubResource("CapsuleShape2D_fum8t")
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("2_fum8t")
+metadata/_edit_lock_ = true
