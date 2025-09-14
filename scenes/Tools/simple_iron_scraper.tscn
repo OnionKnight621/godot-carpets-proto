@@ -11,8 +11,8 @@ emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(-22, 22, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v43xh"]
-radius = 2.82338
-height = 12.7897
+radius = 2.11753
+height = 7.05844
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum8t"]
 radius = 2.82842
