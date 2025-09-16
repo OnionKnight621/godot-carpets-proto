@@ -1,6 +1,8 @@
 extends Node2D
 class_name LevelBase
 
+#var HUB_SCENE = preload("res://scenes/Hub/hub.tscn")
+
 @export var seed: int
 @export var difficulty: int
 @export var dirty_carpet_scene: PackedScene
@@ -9,7 +11,6 @@ class_name LevelBase
 
 var rng := RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print('Level base run. Seed: ', seed, " diff: ", difficulty, " carpet: ", dirty_carpet_scene, " tool: ", tool_scenes)
 	rng.seed = seed
@@ -39,7 +40,7 @@ func _spawn_tools(tool_scenes: Array[PackedScene]) -> void:
 	print('spawn tools: ', tool_scenes.size())
 	if tool_scenes.is_empty(): return
 	
-	# зберемо всі Marker2D у ToolsLocations
+	# gather all Marker2D in ToolsLocations
 	var slots: Array[Marker2D] = []
 	var tl := get_node_or_null("ToolsLocations")
 	if tl:
@@ -57,21 +58,19 @@ func _spawn_tools(tool_scenes: Array[PackedScene]) -> void:
 		if scene == null: continue
 		var tool := scene.instantiate()
 		$ToolBase.add_child(tool)
-		# ставимо на відповідний маркер (через глобальні координати – простіше)
 		if slots.size() > 0:
 			tool.global_position = slots[i].global_position
 			print('spawn tool: ', tool)
 		else:
-			tool.global_position = $ToolBase.global_position  # запасний варіант
-
-	#var tool = tool_scene.instantiate()
-	#$ToolBase.add_child(tool)
+			tool.global_position = $ToolBase.global_position  # backup
 
 
 func _on_progress(p: float) -> void:
-	#$HUDLayer/HUDBase.set_progress(p)
 	run_state.carpet_progress = p
 
 func _on_carpet_cleaned() -> void:
-	#$HUDLayer/HUDBase.show_perk_choice()
 	print('cleaned')
+	
+	if game_state.HUB_SCENE:
+		get_tree().change_scene_to_packed(game_state.HUB_SCENE);
+		return
