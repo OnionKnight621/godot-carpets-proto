@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://b6ruoqxgd80sh"
+path="res://.godot/imported/regular_explanations.dialogue-a03a1a7a3a893f6a653a080fec8984b3.tres"
+
+[deps]
+
+source_file="res://Dialogues/regular_explanations.dialogue"
+dest_files=["res://.godot/imported/regular_explanations.dialogue-a03a1a7a3a893f6a653a080fec8984b3.tres"]
+
+[params]
+
+defaults=true

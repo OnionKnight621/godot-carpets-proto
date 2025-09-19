@@ -1,0 +1,34 @@
+~ start
+Chave: Ну доров. Я [wave]Chave[/wave], щось тіпа консультанта в цій гільдіЇ
+Chave: Можу роздуплити по різним питанням. Задавай, якшо надумав.
+~ questions_loop
+- Хто ти
+	Chave: Я вже казав. Я [wave]Chave[/wave]. Не збираюсь по сто разів повторюватись => questions_loop
+- Шо мені робити ?
+	Chave: Я тобі не батя. Сам придумай.
+	Chave: Але чисто теоретично це гра про чистку килимів, тож можеш чистити килими => questions_loop
+- Як мені чистити килими?
+	Chave: Дядь[wait=1], ти зовсім ідіот? 
+	Chave: Береш в руки щітку і чистиш. 
+	Chave: Якшо бруд - звичайна грязюка, то щітка підійде добре
+	Chave: якшо шось тверде - то знайди щось, чим можна було б це відшкрябати. 
+	Chave: Та й таке. Поки все.
+	Chave: Клікаєш на коврик в хабі і поїхав... => questions_loop
+- Пака.
+	Chave: Ага, і тобі пакакать => END
+=> END
+
+
+
+
+#~ start
+#Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+#Nathan: Here are some choices.
+#- First one
+#	Nathan: You picked the first one.
+#- Second one
+#	Nathan: You picked the second one.
+#- Start again => start
+#- End the conversation => END
+#Nathan: For more information see the online documentation.
+#=> END
