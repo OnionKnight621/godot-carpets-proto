@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 game_state="*res://globals/game_state.gd"
 run_state="*res://globals/run_state.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+TransitionLayer="*res://scenes/TransitionScreens/black_fade_out_layer.tscn"
 
 [dialogue_manager]
 

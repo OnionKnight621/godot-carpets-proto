@@ -34,9 +34,7 @@ func _ready() -> void:
 
 	_set_outline(false, carpet_sprite.material)
 	_set_outline(false, chave_sprite.material)
-	
-	DialogueManager.show_dialogue_balloon(INTRO_DIALOGUE, "start")
-	
+
 func _on_carpet_mouse_entered() -> void:
 	_set_outline(true, carpet_sprite.material)
 

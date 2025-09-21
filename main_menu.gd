@@ -1,37 +1,41 @@
-extends Control
+extends CanvasLayer
 
-const LEVEL_BASE_SCENE: PackedScene = preload("res://scenes/Levels/level_base.tscn")
-#const HUB_SCENE: PackedScene = preload("res://scenes/Hub/hub.tscn")
-@export var LEVEL_TEST: PackedScene = preload("res://scenes/Levels/level_test.tscn") 
-const CARPET_BASE_SCENE: PackedScene = preload("res://scenes/Carpets/dirty_carpet_base.tscn")
+#const LEVEL_BASE_SCENE: PackedScene = preload("res://scenes/Levels/level_base.tscn")
+@export var INTRO_SCENE: PackedScene = preload("res://scenes/TransitionScreens/intro_dialogue_transition.tscn")
+#@export var LEVEL_TEST: PackedScene = preload("res://scenes/Levels/level_test.tscn") 
+#const CARPET_BASE_SCENE: PackedScene = preload("res://scenes/Carpets/dirty_carpet_base.tscn")
 
 func _on_start_btn_pressed() -> void:
-	if game_state.HUB_SCENE:
-		var hub = game_state.HUB_SCENE.instantiate()
-		var tree = get_tree()
-		var prev_scene = tree.current_scene
-		tree.root.add_child(hub);
-		tree.current_scene = hub
-		if prev_scene: prev_scene.queue_free()
+	if INTRO_SCENE:
+		TransitionLayer.change_scene_packed(INTRO_SCENE)
 		return
-		
-	var level: Node2D;
 	
-	if LEVEL_TEST:
-		print('Starting test lvl')
-		level = LEVEL_TEST.instantiate();
-	else:
-		level = LEVEL_BASE_SCENE.instantiate()
-	
-	level.seed = randi()
-	level.difficulty = 1
-	level.dirty_carpet_scene = CARPET_BASE_SCENE
-	
-	var tree = get_tree()
-	var prev_scene = tree.current_scene
-	tree.root.add_child(level);
-	tree.current_scene = level
-	if prev_scene: prev_scene.queue_free()
+	#if game_state.HUB_SCENE:
+		#var hub = game_state.HUB_SCENE.instantiate()
+		#var tree = get_tree()
+		#var prev_scene = tree.current_scene
+		#tree.root.add_child(hub);
+		#tree.current_scene = hub
+		#if prev_scene: prev_scene.queue_free()
+		#return
+		#
+	#var level: Node2D;
+	#
+	#if LEVEL_TEST:
+		#print('Starting test lvl')
+		#level = LEVEL_TEST.instantiate();
+	#else:
+		#level = LEVEL_BASE_SCENE.instantiate()
+	#
+	#level.seed = randi()
+	#level.difficulty = 1
+	#level.dirty_carpet_scene = CARPET_BASE_SCENE
+	#
+	#var tree = get_tree()
+	#var prev_scene = tree.current_scene
+	#tree.root.add_child(level);
+	#tree.current_scene = level
+	#if prev_scene: prev_scene.queue_free()
 
 
 func _on_quit_btn_pressed() -> void:
