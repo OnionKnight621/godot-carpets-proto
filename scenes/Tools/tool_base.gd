@@ -26,7 +26,7 @@ var tool_draggable: bool = false
 
 var _prev_pos = Vector2.ZERO;
 var _active_mods: Array = []    # [{pack: ModifierPack, t_end: float, source: String}]
-var _stat_cache := {}           # кеш підрахованих статів (щоб не рахувати кожен кадр)
+var _stat_cache := {}           # cache of computed stats (avoids recomputing every frame)
 
 func _ready() -> void:
 	_prev_pos = global_position;
@@ -68,7 +68,7 @@ func _effective_vs(chunk: DirtChunk, move_factor: float) -> float:
 
 	var dot: float = d_mech_calculated + d_fluid_calculated + d_solvent_calculated + d_holy_calculated + d_occult_calculated
 	dot = max(0.0, dot)
-	# твій масштаб від розміру пензля лишаю, щоб не ламати баланс
+	# Keep the original brush-derived scale so balance stays intact
 	return clean_power * move_factor  * dot
 
 func _calculate_move_factor(speed: float) -> float:
@@ -105,7 +105,7 @@ func _update_buff_fx() -> void:
 
 	tool_sprite_mat.set_shader_parameter("outline_on", on)
 
-	# Колір: беремо заданий синій і лінійно гасять альфу від 0.9 -> 0.0
+	# Color: start from the configured blue and fade alpha linearly from 0.9 down to 0.0
 	var a: float = 0.0
 	if (on):
 		a = lerp(0.0, 0.9, frac)
@@ -118,18 +118,18 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	var mb := event as InputEventMouseButton
 	if mb.button_index != MOUSE_BUTTON_LEFT or not mb.pressed: return
 
-	# Якщо вже активний ми — відпускаємо
+	# If this tool is already active, release it
 	if run_state.active_tool == self:
 		run_state.end_drag(self)
 		z_index = 0
 		
 		return
 
-	# Якщо інший активний — відпустити його
+	# Release whatever tool is currently active
 	if run_state.active_tool != null:
 		run_state.end_drag(run_state.active_tool)
 
-	# Брати в руки дозволяємо тільки коли курсор на тулі (tool_draggable виставляємо on_enter)
+	# Only allow pickup when the cursor is over the tool (tool_draggable toggled in on_enter)
 	if not tool_draggable:
 		return
 
@@ -171,7 +171,7 @@ func _clean_overlaps(delta: float, move_factor: float) -> void:
 	particles.emitting = cleaned_any
 	
 func apply_modifier_pack(pack: ModifierPack, source: String="pickup") -> void:
-	# знайти існуючий від цього source/id
+	# Find an existing entry with the same source/id
 	if run_state.active_tool != self:
 		return
 		
@@ -207,16 +207,16 @@ func _tick_mods() -> void:
 	_update_buff_fx()
 	
 func _rebuild_stat_cache() -> void:
-	# 1) базові стати інструмента
+	# 1) Seed the cache with the tool's base stats
 	var base = {
 		"damage": { "mech": mech, "fluid": fluid, "solvent": solvent, "holy": 0.0, "occult": 0.0 }
 	}
-	# 2) застосувати add/mul з усіх активних паків
+	# 2) Apply add/mul modifiers from all active packs
 	var add := {}
 	var mul := {}
 	for m in _active_mods:
 		for mod: StatModifier in m.pack.mods:
-			var parts = mod.path.split(".") # напр. ["damage","water","mul"]
+			var parts = mod.path.split(".") # e.g. ["damage","water","mul"]
 			if parts.size() != 3: continue
 			var grp = parts[0]; var key = parts[1]; var kind = parts[2] # add|mul
 			if kind == "add":
@@ -225,7 +225,7 @@ func _rebuild_stat_cache() -> void:
 			elif kind == "mul":
 				mul[grp] = mul.get(grp, {})
 				mul[grp][key] = (mul[grp].get(key, 0.0) + mod.value)
-	# скласти
+	# Combine the results
 	_stat_cache = base
 	for grp in add.keys():
 		for key in add[grp].keys():

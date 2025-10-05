@@ -173,8 +173,8 @@ func _point_inside_carpet_world(world_p: Vector2) -> bool:
 		elif col_shape.shape is ConvexPolygonShape2D:
 			var pts := (col_shape.shape as ConvexPolygonShape2D).points
 			return Geometry2D.is_point_in_polygon(p, pts)
-		# інші шейпи — як є
-	return true  # якщо колізії нема — вважай усе валідним
+		# Treat other shapes as-is
+	return true  # If there is no collision shape, treat everything as valid
 	
 func _block_fully_inside(gx: int, gy: int, s: int, tile_px: int, half: Vector2) -> bool:
 	for oy in s:

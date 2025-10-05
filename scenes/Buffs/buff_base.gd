@@ -24,15 +24,15 @@ func _on_area_entered(area: Area2D) -> void:
 	var tool := area.get_parent() as ToolBase
 	if tool == null:
 		return
-	# даємо баф лише активному інструменту
+	# Only buff the currently active tool
 	if tool != run_state.active_tool:
 		return
 		
-	# очікуємо, що тул має apply_modifier_pack
+	# Expect the tool to expose apply_modifier_pack
 	if tool.has_method("apply_modifier_pack"):
 		print('has meth')
 		tool.apply_modifier_pack(modifier_pack, modifier_source)
-		# опц.: частинка/звук/кулдаун/зникнення
+		# Optional: trigger particles/sound/cooldown/cleanup here
 
 
 func _on_area_exited(area: Area2D) -> void:
