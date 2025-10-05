@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ModifierPack" load_steps=4 format=3 uid="uid://brcxncshvyce3"]
+
+[ext_resource type="Script" uid="uid://dwtbgyo5i1oer" path="res://resources/stat_modifier.gd" id="1_ry157"]
+[ext_resource type="Resource" uid="uid://cuj2j0xbcc43b" path="res://resources/res_water_mul.tres" id="2_3xwvt"]
+[ext_resource type="Script" uid="uid://br3cg8gwbp8wg" path="res://resources/modifier_pack.gd" id="3_66p2s"]
+
+[resource]
+script = ExtResource("3_66p2s")
+id = "water_mul"
+mods = Array[ExtResource("1_ry157")]([ExtResource("2_3xwvt")])
+metadata/_custom_type_script = "uid://br3cg8gwbp8wg"

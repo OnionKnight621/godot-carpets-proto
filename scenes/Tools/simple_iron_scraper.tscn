@@ -11,8 +11,8 @@ emission_box_extents = Vector3(1, 1, 1)
 gravity = Vector3(-22, 22, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v43xh"]
-radius = 2.11753
-height = 7.05844
+radius = 1.0798855
+height = 5.646755
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fum8t"]
 radius = 2.82842
@@ -40,6 +40,7 @@ rotation = -0.845165
 shape = SubResource("CapsuleShape2D_v43xh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
+visible = false
 position = Vector2(-3, -1)
 rotation = -2.35437
 shape = SubResource("CapsuleShape2D_fum8t")

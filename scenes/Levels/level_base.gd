@@ -7,6 +7,7 @@ class_name LevelBase
 @export var difficulty: int
 @export var dirty_carpet_scene: PackedScene
 @export var tool_scenes: Array[PackedScene]
+@export var buff_scenes: Array[PackedScene]
 @export var carpet_pool: Array[CarpetData] = []
 
 var rng := RandomNumberGenerator.new()
@@ -17,6 +18,7 @@ func _ready() -> void:
 	run_state.start_new_run() # or only once at game start
 	_spawn_carpet(dirty_carpet_scene)
 	_spawn_tools(tool_scenes)
+	_spawn_buffs(buff_scenes)
 
 
 func _spawn_carpet(carpet_scene: PackedScene) -> void:
@@ -42,9 +44,9 @@ func _spawn_tools(tool_scenes: Array[PackedScene]) -> void:
 	
 	# gather all Marker2D in ToolsLocations
 	var slots: Array[Marker2D] = []
-	var tl := get_node_or_null("ToolsLocations")
-	if tl:
-		for c in tl.get_children():
+	var l := get_node_or_null("ToolsLocations")
+	if l:
+		for c in l.get_children():
 			if c is Marker2D:
 				slots.append(c)
 	
@@ -63,7 +65,32 @@ func _spawn_tools(tool_scenes: Array[PackedScene]) -> void:
 			print('spawn tool: ', tool)
 		else:
 			tool.global_position = $ToolBase.global_position  # backup
-
+			
+func _spawn_buffs(buff_scenes: Array[PackedScene]) -> void:
+	print('spawn buffs: ', buff_scenes.size())
+	if buff_scenes.is_empty(): return
+	
+	# gather all Marker2D in BuffsLocations
+	var slots: Array[Marker2D] = []
+	var l := get_node_or_null("BuffsLocations")
+	if l:
+		for c in l.get_children():
+			if c is Marker2D:
+				slots.append(c)
+				
+	if slots.is_empty():
+		push_warning("No buff spawn markers under BuffsLocations; spawning at ToolBase origin.")
+		
+	var count: int = min(buff_scenes.size(), slots.size() if slots.size() > 0 else buff_scenes.size())
+	
+	for i in count:
+		var scene := buff_scenes[i]
+		if scene == null: continue
+		var buff := scene.instantiate()
+		$ToolBase.add_child(buff)
+		if slots.size() > 0:
+			buff.global_position = slots[i].global_position
+			print('spawn buff: ', buff)
 
 func _on_progress(p: float) -> void:
 	run_state.carpet_progress = p

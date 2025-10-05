@@ -49,6 +49,7 @@ locale/translations_pot_files=PackedStringArray("res://Dialogues/intro.dialogue"
 2d_physics/layer_1="carpet"
 2d_physics/layer_2="tool"
 2d_physics/layer_3="dirt"
+2d_physics/layer_4="buff"
 
 [plugins]
 

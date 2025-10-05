@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmvtapxf1w8kt"]
+
+[ext_resource type="PackedScene" uid="uid://co63ch68l3d3e" path="res://scenes/Buffs/buff_base.tscn" id="1_t8t7h"]
+[ext_resource type="Script" uid="uid://p3dsychy4cew" path="res://scenes/Buffs/bucket_of_water.gd" id="2_8yvy7"]
+[ext_resource type="Texture2D" uid="uid://df2eregh6u2gl" path="res://graphics/sprites/tools/wooden_bucket.png" id="3_bdk0l"]
+[ext_resource type="Resource" uid="uid://brcxncshvyce3" path="res://resources/res_water_bucket_mods.tres" id="3_ytg12"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bdk0l"]
+radius = 19.200005
+height = 48.000008
+
+[node name="BucketOfWater" instance=ExtResource("1_t8t7h")]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("2_8yvy7")
+modifier_pack = ExtResource("3_ytg12")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+position = Vector2(-1.1999998, 1.1999999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("CapsuleShape2D_bdk0l")
+
+[node name="Sprite2D" parent="." index="1"]
+texture_filter = 1
+texture = ExtResource("3_bdk0l")
