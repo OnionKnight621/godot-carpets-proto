@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_f4b2u")
 path = "damage.fluid.mul"
-value = 0.5
+value = 5.0
 metadata/_custom_type_script = "uid://dwtbgyo5i1oer"

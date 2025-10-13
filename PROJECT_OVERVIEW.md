@@ -7,7 +7,7 @@
 ## 1) Status Snapshot
 
 * **Engine:** Godot 4.5 (Forward+ renderer, `project.godot`).
-* **Loop:** MainMenu → **Hub** → LevelBase (cleaning) → perk selection / next carpet.
+* **Loop:** MainMenu → **Hub** → LevelBase (cleaning) → perk selection → **Hub** → next carpet.
 * **Autoloads:** `globals/game_state.gd` (meta progression) + `globals/run_state.gd` (current run, exclusive drag management).
 * **Procedural dirt:** multi-layer grid generation bounded by the carpet collision; top-of-cell mechanic governs what can be cleaned.
 * **Tools:** multiple tools with exclusive drag control; cursor speed converts into a damage multiplier.
@@ -44,7 +44,7 @@ LevelBase / LevelTest (PackedScene)
 
 ### 3.1 Run & Meta State
 
-`globals/run_state.gd` manages seeds, the active tool, and run-wide progress (`run_started`, `progress_change` signals). `globals/game_state.gd` holds meta currency and unlocked tools; update the Autoloads list when introducing new managers.
+`globals/run_state.gd` manages seeds (not implemented yet), the active tool, and run-wide progress (`run_started`, `progress_change` signals). `globals/game_state.gd` holds meta currency and unlocked tools (not implemented yet); update the Autoloads list when introducing new managers.
 
 ### 3.2 Dirty Carpet & Dirt Stack
 

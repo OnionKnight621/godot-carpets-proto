@@ -95,19 +95,16 @@ func _fluid_buff_frac() -> float:
 		
 func _update_buff_fx() -> void:
 	if tool_sprite_mat == null: return
-	print('rsid: ', run_state.tool_is_dragging, ' rsa: ', run_state.active_tool )
 
 	var frac := _fluid_buff_frac()          # 0..1
-	var on := (frac > 0.0)
-	
-	if (!run_state.tool_is_dragging or !run_state.active_tool == self) and frac:
-		return
+	var has_buff := (frac > 0.0)
+	var should_show := has_buff and run_state.tool_is_dragging and run_state.active_tool == self
 
-	tool_sprite_mat.set_shader_parameter("outline_on", on)
+	tool_sprite_mat.set_shader_parameter("outline_on", should_show)
 
 	# Color: start from the configured blue and fade alpha linearly from 0.9 down to 0.0
 	var a: float = 0.0
-	if (on):
+	if has_buff:
 		a = lerp(0.0, 0.9, frac)
 	var c := fluid_buff_outline_color
 	c.a = a
