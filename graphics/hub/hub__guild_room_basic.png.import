@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmya6tfgx8ii4"
-path="res://.godot/imported/carpet-on-floor.png-88bcb503878949481b9deed7838c8d99.ctex"
+uid="uid://byji80no53peb"
+path="res://.godot/imported/hub__guild_room_basic.png-d00a186c1963e45622369a9f25e154e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/hub/carpet-on-floor.png"
-dest_files=["res://.godot/imported/carpet-on-floor.png-88bcb503878949481b9deed7838c8d99.ctex"]
+source_file="res://graphics/hub/hub__guild_room_basic.png"
+dest_files=["res://.godot/imported/hub__guild_room_basic.png-d00a186c1963e45622369a9f25e154e8.ctex"]
 
 [params]
 

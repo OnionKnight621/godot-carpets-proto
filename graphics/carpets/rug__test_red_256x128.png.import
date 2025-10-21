@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ukv7wqph2qgm"
-path="res://.godot/imported/rug-test-sanya-256.png-e2fd95adcfc64843099d68f0e93d1147.ctex"
+uid="uid://bb324tahmd65n"
+path="res://.godot/imported/rug__test_red_256x128.png-0b1f63335da21faede0f650b682423b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/carpets/rug-test-sanya-256.png"
-dest_files=["res://.godot/imported/rug-test-sanya-256.png-e2fd95adcfc64843099d68f0e93d1147.ctex"]
+source_file="res://graphics/carpets/rug__test_red_256x128.png"
+dest_files=["res://.godot/imported/rug__test_red_256x128.png-0b1f63335da21faede0f650b682423b3.ctex"]
 
 [params]
 

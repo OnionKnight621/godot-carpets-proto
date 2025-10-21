@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://2xfavx2xhr2w"]
 
 [ext_resource type="PackedScene" uid="uid://cidwtshsgv7t" path="res://scenes/Tools/tool_base.tscn" id="1_ff0nx"]
-[ext_resource type="Texture2D" uid="uid://cvdgv8yqdrvdu" path="res://graphics/tools/super-basic-scraper.png" id="2_fum8t"]
+[ext_resource type="Texture2D" uid="uid://cvdgv8yqdrvdu" path="res://graphics/tools/tool__basic_scraper.png" id="2_fum8t"]
 [ext_resource type="Script" uid="uid://x3ahycuj3jg6" path="res://scenes/Tools/simple_iron_scraper.gd" id="2_v43xh"]
 [ext_resource type="Shader" uid="uid://6mnk3xsxqfhc" path="res://shaders/outline.gdshader" id="3_v43xh"]
 

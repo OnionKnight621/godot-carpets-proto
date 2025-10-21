@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://caxe4yn3ymhfo"
-path="res://.godot/imported/rug-test-red-256.png-319b58abfb51a40aff30f0caa858557a.ctex"
+uid="uid://bnk27mu62oj3q"
+path="res://.godot/imported/dirt__corrupted_chunk_32x32.png-470b85a83cbdec5eeb0864ebe8dd5daf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/carpets/rug-test-red-256.png"
-dest_files=["res://.godot/imported/rug-test-red-256.png-319b58abfb51a40aff30f0caa858557a.ctex"]
+source_file="res://graphics/dirt/dirt__corrupted_chunk_32x32.png"
+dest_files=["res://.godot/imported/dirt__corrupted_chunk_32x32.png-470b85a83cbdec5eeb0864ebe8dd5daf.ctex"]
 
 [params]
 

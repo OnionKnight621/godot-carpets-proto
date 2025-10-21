@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://5a1udmiyb7uu"]
 
 [ext_resource type="PackedScene" uid="uid://bksni7j7jkkhs" path="res://scenes/Dirt/dirt_chank_base.tscn" id="1_1m5ex"]
-[ext_resource type="Texture2D" uid="uid://bfqdssl3f2cta" path="res://graphics/dirt/dirt_chunks_clay.png" id="2_heevj"]
+[ext_resource type="Texture2D" uid="uid://bfqdssl3f2cta" path="res://graphics/dirt/dirt__clay_32x32.png" id="2_heevj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1m5ex"]
 size = Vector2(8, 8)

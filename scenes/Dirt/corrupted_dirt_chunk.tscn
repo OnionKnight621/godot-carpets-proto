@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cf2rhs58mlcow"]
 
 [ext_resource type="PackedScene" uid="uid://bksni7j7jkkhs" path="res://scenes/Dirt/dirt_chank_base.tscn" id="1_q1ssi"]
-[ext_resource type="Texture2D" uid="uid://bnk27mu62oj3q" path="res://graphics/dirt/dirt-solids-corruption.png" id="2_oybdn"]
+[ext_resource type="Texture2D" uid="uid://bnk27mu62oj3q" path="res://graphics/dirt/dirt__corrupted_chunk_32x32.png" id="2_oybdn"]
 [ext_resource type="Shader" uid="uid://6mnk3xsxqfhc" path="res://shaders/outline.gdshader" id="2_q1x7m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xj45c"]

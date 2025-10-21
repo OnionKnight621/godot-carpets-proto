@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byji80no53peb"
-path="res://.godot/imported/guild-room-initial.png-5cc189c3223381bc5d56f2b35e3cb2eb.ctex"
+uid="uid://digkmdteu1qnu"
+path="res://.godot/imported/tool__basic_brush.png-727230306032c85b68782c2b774fa52b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/hub/guild-room-initial.png"
-dest_files=["res://.godot/imported/guild-room-initial.png-5cc189c3223381bc5d56f2b35e3cb2eb.ctex"]
+source_file="res://graphics/tools/tool__basic_brush.png"
+dest_files=["res://.godot/imported/tool__basic_brush.png-727230306032c85b68782c2b774fa52b.ctex"]
 
 [params]
 

@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/defs/def__carpet_data.gd" id="2_wsqji"]
 [ext_resource type="Resource" uid="uid://dl1a10n733qab" path="res://resources/carpets/res__carpet__test_blue.tres" id="3_f3njo"]
 [ext_resource type="Resource" uid="uid://jor6orpujlgs" path="res://resources/carpets/res__carpet__test_red.tres" id="5_wckjl"]
-[ext_resource type="Texture2D" uid="uid://c6ev6vdaghvu6" path="res://graphics/interior/wooden-floor-basic.png" id="6_etonf"]
+[ext_resource type="Texture2D" uid="uid://c6ev6vdaghvu6" path="res://graphics/interior/floor__wooden.png" id="6_etonf"]
 [ext_resource type="PackedScene" uid="uid://hyfvcujkxbgf" path="res://scenes/UI/HUD/hud.tscn" id="9_kl866"]
 
 [node name="LevelBase" type="Node2D"]

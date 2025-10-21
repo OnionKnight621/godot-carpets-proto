@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DirtLayerData" load_steps=3 format=3 uid="uid://7wt8s30yenjv"]
 
-[ext_resource type="Texture2D" uid="uid://blas3tcmp42vt" path="res://graphics/dirt/dirt-chanks-swampy.png" id="1_c1otp"]
+[ext_resource type="Texture2D" uid="uid://blas3tcmp42vt" path="res://graphics/dirt/dirt__mud_32x32.png" id="1_c1otp"]
 [ext_resource type="Script" uid="uid://cykhbkywctm2b" path="res://resources/defs/def__dirt_layer_data.gd" id="2_fmsyu"]
 
 [resource]

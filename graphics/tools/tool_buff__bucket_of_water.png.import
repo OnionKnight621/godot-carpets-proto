@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blas3tcmp42vt"
-path="res://.godot/imported/dirt-chanks-swampy.png-d3ebdb99d341dec6551d35286bda8a5f.ctex"
+uid="uid://df2eregh6u2gl"
+path="res://.godot/imported/tool_buff__bucket_of_water.png-59673829273af5f0c7beb6e1e3376c3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/dirt/dirt-chanks-swampy.png"
-dest_files=["res://.godot/imported/dirt-chanks-swampy.png-d3ebdb99d341dec6551d35286bda8a5f.ctex"]
+source_file="res://graphics/tools/tool_buff__bucket_of_water.png"
+dest_files=["res://.godot/imported/tool_buff__bucket_of_water.png-59673829273af5f0c7beb6e1e3376c3c.ctex"]
 
 [params]
 

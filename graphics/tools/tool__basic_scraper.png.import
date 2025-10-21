@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df2eregh6u2gl"
-path="res://.godot/imported/wooden_bucket.png-f09e51c158a07560bce11c07543faa18.ctex"
+uid="uid://cvdgv8yqdrvdu"
+path="res://.godot/imported/tool__basic_scraper.png-cbd6f7d2a0edd9bf29ea5c241e3bb8ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/tools/wooden_bucket.png"
-dest_files=["res://.godot/imported/wooden_bucket.png-f09e51c158a07560bce11c07543faa18.ctex"]
+source_file="res://graphics/tools/tool__basic_scraper.png"
+dest_files=["res://.godot/imported/tool__basic_scraper.png-cbd6f7d2a0edd9bf29ea5c241e3bb8ec.ctex"]
 
 [params]
 

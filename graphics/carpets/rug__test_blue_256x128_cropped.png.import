@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnk27mu62oj3q"
-path="res://.godot/imported/dirt-solids-corruption.png-3ba3b1e5b547abebd2c32afd69b0b62a.ctex"
+uid="uid://ukv7wqph2qgm"
+path="res://.godot/imported/rug__test_blue_256x128_cropped.png-baf66dff1c2837cccb8838db21140bbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/dirt/dirt-solids-corruption.png"
-dest_files=["res://.godot/imported/dirt-solids-corruption.png-3ba3b1e5b547abebd2c32afd69b0b62a.ctex"]
+source_file="res://graphics/carpets/rug__test_blue_256x128_cropped.png"
+dest_files=["res://.godot/imported/rug__test_blue_256x128_cropped.png-baf66dff1c2837cccb8838db21140bbd.ctex"]
 
 [params]
 

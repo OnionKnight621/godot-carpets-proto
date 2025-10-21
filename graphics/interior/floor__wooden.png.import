@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boboj43a781bm"
-path="res://.godot/imported/rug-test-red.png-86704af56a771e0338f6cdcc57060fd1.ctex"
+uid="uid://c6ev6vdaghvu6"
+path="res://.godot/imported/floor__wooden.png-a41b08a3d46a6d1f7b99679fc9b4dbe3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/carpets/rug-test-red.png"
-dest_files=["res://.godot/imported/rug-test-red.png-86704af56a771e0338f6cdcc57060fd1.ctex"]
+source_file="res://graphics/interior/floor__wooden.png"
+dest_files=["res://.godot/imported/floor__wooden.png-a41b08a3d46a6d1f7b99679fc9b4dbe3.ctex"]
 
 [params]
 

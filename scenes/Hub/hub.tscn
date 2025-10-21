@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bpxnlarfg0s50"]
 
 [ext_resource type="Script" uid="uid://bb1e2568fphh0" path="res://scenes/Hub/hub.gd" id="1_87mk0"]
-[ext_resource type="Texture2D" uid="uid://byji80no53peb" path="res://graphics/hub/guild-room-initial.png" id="1_fl6jk"]
-[ext_resource type="Texture2D" uid="uid://cmya6tfgx8ii4" path="res://graphics/hub/carpet-on-floor.png" id="2_87mk0"]
+[ext_resource type="Texture2D" uid="uid://byji80no53peb" path="res://graphics/hub/hub__guild_room_basic.png" id="1_fl6jk"]
+[ext_resource type="Texture2D" uid="uid://cmya6tfgx8ii4" path="res://graphics/hub/hub__carpet_miniature.png" id="2_87mk0"]
 [ext_resource type="Shader" uid="uid://6mnk3xsxqfhc" path="res://shaders/outline.gdshader" id="3_vv7of"]
 [ext_resource type="Texture2D" uid="uid://cdjaecigx4clw" path="res://graphics/characters/chave_pixelated.png" id="5_007r7"]
 

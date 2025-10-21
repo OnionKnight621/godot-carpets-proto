@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://drqp8f1b6tvj3"]
 
 [ext_resource type="PackedScene" uid="uid://bksni7j7jkkhs" path="res://scenes/Dirt/dirt_chank_base.tscn" id="1_7yxll"]
-[ext_resource type="Texture2D" uid="uid://blas3tcmp42vt" path="res://graphics/dirt/dirt-chanks-swampy.png" id="2_wktf7"]
+[ext_resource type="Texture2D" uid="uid://blas3tcmp42vt" path="res://graphics/dirt/dirt__mud_32x32.png" id="2_wktf7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wktf7"]
 atlas = ExtResource("2_wktf7")
