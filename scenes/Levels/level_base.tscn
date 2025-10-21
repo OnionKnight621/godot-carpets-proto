@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c2oasfwp17qfq" path="res://scenes/Levels/level_base.gd" id="1_cddwm"]
 [ext_resource type="PackedScene" uid="uid://dmvtapxf1w8kt" path="res://scenes/Buffs/bucket_of_water.tscn" id="2_s42oo"]
-[ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/carpet_data.gd" id="2_wsqji"]
-[ext_resource type="Resource" uid="uid://dl1a10n733qab" path="res://resources/res_test_carpet.tres" id="3_f3njo"]
-[ext_resource type="Resource" uid="uid://jor6orpujlgs" path="res://resources/res_test_carpet_red.tres" id="5_wckjl"]
-[ext_resource type="Texture2D" uid="uid://c6ev6vdaghvu6" path="res://graphics/sprites/interior/wooden-floor-basic.png" id="6_etonf"]
+[ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/defs/def__carpet_data.gd" id="2_wsqji"]
+[ext_resource type="Resource" uid="uid://dl1a10n733qab" path="res://resources/carpets/res__carpet__test_blue.tres" id="3_f3njo"]
+[ext_resource type="Resource" uid="uid://jor6orpujlgs" path="res://resources/carpets/res__carpet__test_red.tres" id="5_wckjl"]
+[ext_resource type="Texture2D" uid="uid://c6ev6vdaghvu6" path="res://graphics/interior/wooden-floor-basic.png" id="6_etonf"]
 [ext_resource type="PackedScene" uid="uid://hyfvcujkxbgf" path="res://scenes/UI/HUD/hud.tscn" id="9_kl866"]
 
 [node name="LevelBase" type="Node2D"]

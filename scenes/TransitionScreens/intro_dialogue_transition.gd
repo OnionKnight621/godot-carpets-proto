@@ -1,6 +1,6 @@
 extends Node2D
 
-var INTRO_DIALOGUE = preload("res://Dialogues/intro.dialogue")
+var INTRO_DIALOGUE = preload("res://dialogues/intro.dialogue")
 
 func _init() -> void:
 	

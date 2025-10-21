@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vt4c53itns42"]
 
 [ext_resource type="PackedScene" uid="uid://cic57ipbb5cdc" path="res://scenes/Carpets/carpet_base.tscn" id="1_njprf"]
-[ext_resource type="Texture2D" uid="uid://b58pwbgg5abk7" path="res://graphics/sprites/carpets/rug-test-sanya-256-128.png" id="2_njprf"]
+[ext_resource type="Texture2D" uid="uid://b58pwbgg5abk7" path="res://graphics/carpets/rug-test-sanya-256-128.png" id="2_njprf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2a4m"]
 size = Vector2(219.13, 86.9185)

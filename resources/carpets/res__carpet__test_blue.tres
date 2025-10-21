@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CarpetData" load_steps=7 format=3 uid="uid://dl1a10n733qab"]
+
+[ext_resource type="PackedScene" uid="uid://vt4c53itns42" path="res://scenes/Carpets/test_carpet.tscn" id="1_od41k"]
+[ext_resource type="Script" uid="uid://cykhbkywctm2b" path="res://resources/defs/def__dirt_layer_data.gd" id="2_828xa"]
+[ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/defs/def__carpet_data.gd" id="2_m234y"]
+[ext_resource type="Resource" uid="uid://cf31mytxyocm0" path="res://resources/dirt/res__dirt__clay_32x32.tres" id="3_5fitp"]
+[ext_resource type="Resource" uid="uid://7wt8s30yenjv" path="res://resources/dirt/res__dirt__mud_32x32.tres" id="4_yg3jw"]
+[ext_resource type="Resource" uid="uid://bg0sp0en468ik" path="res://resources/dirt/res__dirt__corrupted_chunk_32x32.tres" id="5_5fitp"]
+
+[resource]
+script = ExtResource("2_m234y")
+clean_carpet_scene = ExtResource("1_od41k")
+dirt_layers = Array[ExtResource("2_828xa")]([ExtResource("3_5fitp"), ExtResource("4_yg3jw"), ExtResource("5_5fitp")])
+tags = Array[String]([])
+difficulty = 1
+metadata/_custom_type_script = "uid://duw0ki0n3kmq8"

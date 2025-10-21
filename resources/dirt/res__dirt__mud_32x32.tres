@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DirtLayerData" load_steps=3 format=3 uid="uid://7wt8s30yenjv"]
+
+[ext_resource type="Texture2D" uid="uid://blas3tcmp42vt" path="res://graphics/dirt/dirt-chanks-swampy.png" id="1_c1otp"]
+[ext_resource type="Script" uid="uid://cykhbkywctm2b" path="res://resources/defs/def__dirt_layer_data.gd" id="2_fmsyu"]
+
+[resource]
+script = ExtResource("2_fmsyu")
+atlas = ExtResource("1_c1otp")
+atlas_cols = 16
+tile_px = 2
+density = 0.8
+resist_mech = 0.3
+resist_fluid = 0.1
+resist_solvent = 0.1
+resist_holy = 0.9
+resist_occult = 0.9
+layer_tag = "mud dirt"
+metadata/_custom_type_script = "uid://cykhbkywctm2b"

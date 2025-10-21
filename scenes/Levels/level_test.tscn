@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bf0iwb2p6aa8t" path="res://scenes/Levels/level_test.gd" id="2_udonv"]
 [ext_resource type="PackedScene" uid="uid://bsyfke3cmy6gh" path="res://scenes/Tools/simple_round_brush.tscn" id="3_udonv"]
 [ext_resource type="PackedScene" uid="uid://2xfavx2xhr2w" path="res://scenes/Tools/simple_iron_scraper.tscn" id="4_nqj2a"]
-[ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/carpet_data.gd" id="5_der1n"]
-[ext_resource type="Resource" uid="uid://jor6orpujlgs" path="res://resources/res_test_carpet_red.tres" id="6_rw07u"]
+[ext_resource type="Script" uid="uid://duw0ki0n3kmq8" path="res://resources/defs/def__carpet_data.gd" id="5_der1n"]
+[ext_resource type="Resource" uid="uid://jor6orpujlgs" path="res://resources/carpets/res__carpet__test_red.tres" id="6_rw07u"]
 
 [node name="LevelTest" instance=ExtResource("1_oojhj")]
 script = ExtResource("2_udonv")

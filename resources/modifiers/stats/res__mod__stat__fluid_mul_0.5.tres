@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatModifier" load_steps=2 format=3 uid="uid://cuj2j0xbcc43b"]
+
+[ext_resource type="Script" uid="uid://dwtbgyo5i1oer" path="res://resources/defs/def__stat_modifier.gd" id="1_f4b2u"]
+
+[resource]
+script = ExtResource("1_f4b2u")
+path = "damage.fluid.mul"
+value = 5.0
+metadata/_custom_type_script = "uid://dwtbgyo5i1oer"

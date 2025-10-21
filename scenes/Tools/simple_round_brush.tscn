@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsyfke3cmy6gh"]
+[gd_scene load_steps=9 format=3 uid="uid://bsyfke3cmy6gh"]
 
 [ext_resource type="PackedScene" uid="uid://cidwtshsgv7t" path="res://scenes/Tools/tool_base.tscn" id="1_l15ft"]
 [ext_resource type="Script" uid="uid://bhccoq4oskmwg" path="res://scenes/Tools/simple_round_brush.gd" id="2_pka7x"]
-[ext_resource type="Texture2D" uid="uid://digkmdteu1qnu" path="res://graphics/sprites/tools/super-basic-brush.png" id="3_pka7x"]
+[ext_resource type="Shader" uid="uid://6mnk3xsxqfhc" path="res://shaders/outline.gdshader" id="3_0sado"]
+[ext_resource type="Texture2D" uid="uid://digkmdteu1qnu" path="res://graphics/tools/super-basic-brush.png" id="3_pka7x"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pka7x"]
 lifetime_randomness = 0.35
@@ -29,6 +30,17 @@ height = 40.4954
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0sado"]
 radius = 8.95305
 height = 33.979862
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkre7"]
+resource_local_to_scene = true
+shader = ExtResource("3_0sado")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.50000007125
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+shader_parameter/number_of_images = Vector2(1, 1)
+shader_parameter/outline_on = false
 
 [node name="SimpleRoundBrush" instance=ExtResource("1_l15ft")]
 texture_filter = 1
@@ -58,5 +70,6 @@ rotation = -2.02633
 shape = SubResource("CapsuleShape2D_0sado")
 
 [node name="Sprite2D" parent="." index="3"]
+material = SubResource("ShaderMaterial_gkre7")
 texture = ExtResource("3_pka7x")
 metadata/_edit_lock_ = true

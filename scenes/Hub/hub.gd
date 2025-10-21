@@ -15,8 +15,8 @@ const CARPET_BASE_SCENE: PackedScene = preload("res://scenes/Carpets/dirty_carpe
 
 @export var test_level_scene: PackedScene #= preload("res://scenes/Levels/level_test.tscn");
 
-var INTRO_DIALOGUE = preload("res://Dialogues/intro.dialogue")
-var CHAVE_DIALOGUE = preload("res://Dialogues/regular_explanations.dialogue")
+var INTRO_DIALOGUE = preload("res://dialogues/intro.dialogue")
+var CHAVE_DIALOGUE = preload("res://dialogues/regular_explanations.dialogue")
 
 var showing_area
 

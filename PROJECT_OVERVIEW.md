@@ -24,10 +24,10 @@ MainMenu (CanvasLayer)
   └─ TransitionLayer (CanvasLayer)        # global fade, change_scene_packed
   └─ IntroDialogueTransition              # smooth intro dialogue handoff
   └─ Hub (Node2D)                         # guild room staging area
-      ├─ Room (Sprite2D)                  # background plate
-      ├─ CarpetArea (Area2D)              # interactive carpet (hover → outline, click → Level)
-      ├─ NPC / Interaction stubs          # future upgrade/quest anchor points
-      └─ Buff spawners (e.g., bucket)
+	  ├─ Room (Sprite2D)                  # background plate
+	  ├─ CarpetArea (Area2D)              # interactive carpet (hover → outline, click → Level)
+	  ├─ NPC / Interaction stubs          # future upgrade/quest anchor points
+	  └─ Buff spawners (e.g., bucket)
 
 LevelBase / LevelTest (PackedScene)
   ├─ CarpetRoot → DirtyCarpetBase         # primary dirt logic
@@ -86,7 +86,7 @@ Particles, foam, and SFX fire only when `effective > 0`.
 
 ```gdscript
 if tool != run_state.active_tool:
-    return
+	return
 tool.apply_modifier_pack(modifier_pack, modifier_source)
 ```
 
