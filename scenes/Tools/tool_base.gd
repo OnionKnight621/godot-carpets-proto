@@ -33,6 +33,9 @@ func _ready() -> void:
 	particles.emitting = false
 	_rebuild_stat_cache()
 	_update_buff_fx()
+	var buffs_callable := Callable(self, "_on_global_buffs_changed")
+	if not run_state.buffs_changed.is_connected(buffs_callable):
+		run_state.buffs_changed.connect(buffs_callable)
 		
 func _physics_process(delta: float) -> void:
 	_tick_mods()
@@ -58,7 +61,7 @@ func _effective_vs(chunk: DirtChunk, move_factor: float) -> float:
 	var d_solvent := get_damage("solvent");
 	var d_holy := get_damage("holy");
 	var d_occult := get_damage("occult");
-	print('mech: ', mech, " fluid: ", fluid, " d_mech: ", d_mech, " d_fluid: ", d_fluid)
+	# print('mech: ', mech, " fluid: ", fluid, " d_mech: ", d_mech, " d_fluid: ", d_fluid)
 
 	var d_mech_calculated := d_mech * (1.0 - chunk.resist_mech)
 	var d_fluid_calculated := d_fluid * (1.0 - chunk.resist_fluid)
@@ -81,16 +84,26 @@ func _calculate_move_factor(speed: float) -> float:
 func _fluid_buff_frac() -> float:
 	var now = Time.get_unix_time_from_system()
 	var frac := 0.0
-	for m in _active_mods:
+	var mods := _active_mods.duplicate()
+	for global_mod in run_state.get_global_mods():
+		mods.append(global_mod)
+	for entry in mods:
+		var pack: ModifierPack = entry.get("pack")
+		if pack == null:
+			continue
 		var touches_fluid := false
-		for mod: StatModifier in m.pack.mods:
+		for mod: StatModifier in pack.mods:
 			if mod.path == "damage.fluid.mul" and mod.value > 0.0:
 				touches_fluid = true
 				break
 		if touches_fluid:
-			var left  = max(m.t_end - now, 0.0)
-			var total = max(m.pack.duration_sec, 0.001)
-			frac = max(frac, left / total)
+			var t_end: float = entry.get("t_end", INF)
+			if t_end == INF:
+				frac = max(frac, 1.0)
+			else:
+				var left  = max(t_end - now, 0.0)
+				var total = max(pack.duration_sec, 0.001)
+				frac = max(frac, left / total)
 	return frac
 		
 func _update_buff_fx() -> void:
@@ -192,7 +205,10 @@ func apply_modifier_pack(pack: ModifierPack, source: String="pickup") -> void:
 	_rebuild_stat_cache()
 	_update_buff_fx()
 	
+
 func _tick_mods() -> void:
+	if run_state.buff_paused:
+		return
 	var now = Time.get_unix_time_from_system()
 	var changed := false
 	for i in range(_active_mods.size() - 1, -1, -1):
@@ -211,8 +227,14 @@ func _rebuild_stat_cache() -> void:
 	# 2) Apply add/mul modifiers from all active packs
 	var add := {}
 	var mul := {}
-	for m in _active_mods:
-		for mod: StatModifier in m.pack.mods:
+	var mods := _active_mods.duplicate()
+	for global_mod in run_state.get_global_mods():
+		mods.append(global_mod)
+	for entry in mods:
+		var pack: ModifierPack = entry.get("pack")
+		if pack == null:
+			continue
+		for mod: StatModifier in pack.mods:
 			var parts = mod.path.split(".") # e.g. ["damage","water","mul"]
 			if parts.size() != 3: continue
 			var grp = parts[0]; var key = parts[1]; var kind = parts[2] # add|mul
@@ -233,3 +255,7 @@ func _rebuild_stat_cache() -> void:
 			
 func get_damage(channel: String) -> float:
 	return _stat_cache.get("damage", {}).get(channel, 0.0)
+
+func _on_global_buffs_changed(_target: ToolBase) -> void:
+	_rebuild_stat_cache()
+	_update_buff_fx()

@@ -7,5 +7,6 @@
 [resource]
 script = ExtResource("3_66p2s")
 id = "water_mul"
+duration_sec = 300.0
 mods = Array[ExtResource("1_ry157")]([ExtResource("2_3xwvt")])
 metadata/_custom_type_script = "uid://br3cg8gwbp8wg"
